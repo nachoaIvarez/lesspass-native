@@ -1,6 +1,7 @@
-This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
+<div style="text-align:center"><h1>Lesspass Native</h1><img src="https://cloud.githubusercontent.com/assets/7253814/25825973/665388d0-341b-11e7-81f6-3b42ecf3a303.png" alt="alt text" width="200"><p><small>Lesspass native running on iOS</small></p></div>
 
-Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
+## Help Wanted
+Turns the lesspass-core library depends on some node core modules, which are not available in React Native environments. I shimmed them with this https://github.com/mvayngrib/rn-nodeify … (the only solution out there) and the app works, but password generation is taking longer than acceptable: like a minute processing. This is weird since in mobile browsers lesspass is also using shimmed versions of node core modules with browserify. Currently investigating how to improve this. Feel free to open a PR or an issue to provide feedback!
 
 ## Table of Contents
 
