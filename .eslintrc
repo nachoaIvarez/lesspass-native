@@ -1,0 +1,15 @@
+{
+  "parser": "babel-eslint",
+  "extends": "react-app",
+  "rules": {
+    "array-bracket-spacing": ["error", "never"],
+    "comma-dangle": ["error", "always-multiline"],
+    "indent": ["error", 2],
+    "max-len": ["error", 100],
+    "no-dupe-keys": "error",
+    "object-curly-spacing": ["error", "always"],
+    "react/jsx-no-duplicate-props": "error",
+    "quote-props": ["error", "consistent-as-needed"],
+    "quotes": ["error", "single"]
+  },
+}
