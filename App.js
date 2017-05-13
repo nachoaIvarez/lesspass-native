@@ -24,7 +24,10 @@ import { DEFAULT_PROFILE, getFingerprintSettings } from './utils';
 import logo from './logo.png';
 import menlo from './menlo.ttf';
 
-const MAX_LENGTH = 30;
+const { Item: PickerItem } = Picker;
+
+const MIN_LENGTH = 5;
+const MAX_LENGTH = 36;
 const MAX_COUNTER = 1000;
 const APP_COLOR = '#3398EB';
 const DISTANCE = 20;
@@ -36,37 +39,37 @@ const Menu = ({ lowercase, uppercase, numbers, symbols, length, counter, update 
     <View style={styles.setting}>
       <Text style={styles.settingText}>a-z</Text>
       <Switch
+        thumbTintColor={Platform.OS === 'android' ? 'white' : undefined}
         onTintColor={APP_COLOR}
         onValueChange={value => update({ lowercase: value })}
         value={lowercase}
-        style={styles.switch}
       />
     </View>
     <View style={styles.setting}>
       <Text style={styles.settingText}>A-Z</Text>
       <Switch
+        thumbTintColor={Platform.OS === 'android' ? 'white' : undefined}
         onTintColor={APP_COLOR}
         onValueChange={value => update({ uppercase: value })}
         value={uppercase}
-        style={styles.switch}
       />
     </View>
     <View style={styles.setting}>
       <Text style={styles.settingText}>0-9</Text>
       <Switch
+        thumbTintColor={Platform.OS === 'android' ? 'white' : undefined}
         onTintColor={APP_COLOR}
         onValueChange={value => update({ numbers: value })}
         value={numbers}
-        style={styles.switch}
       />
     </View>
     <View style={styles.setting}>
       <Text style={styles.settingText}>%!@</Text>
       <Switch
+        thumbTintColor={Platform.OS === 'android' ? 'white' : undefined}
         onTintColor={APP_COLOR}
         onValueChange={value => update({ symbols: value })}
         value={symbols}
-        style={styles.switch}
       />
     </View>
     <View style={styles.pickersContainer}>
@@ -77,8 +80,12 @@ const Menu = ({ lowercase, uppercase, numbers, symbols, length, counter, update 
           selectedValue={length}
           onValueChange={value => update({ length: value })}
         >
-          {[...Array(MAX_LENGTH).keys()].map(value => (
-            <Picker.Item key={`length${value}`} label={`${value + 5}`} value={value + 1} />
+          {[...Array(MAX_LENGTH - MIN_LENGTH).keys()].map(value => (
+            <PickerItem
+              key={`length${value}`}
+              label={`${value + MIN_LENGTH}`}
+              value={value + MIN_LENGTH}
+            />
           ))}
         </Picker>
       </View>
@@ -90,7 +97,7 @@ const Menu = ({ lowercase, uppercase, numbers, symbols, length, counter, update 
           onValueChange={value => update({ counter: value })}
         >
           {[...Array(MAX_COUNTER).keys()].map(value => (
-            <Picker.Item key={`counter${value}`} label={`${value + 1}`} value={value + 1} />
+            <PickerItem key={`counter${value}`} label={`${value + 1}`} value={value + 1} />
           ))}
         </Picker>
       </View>
@@ -176,7 +183,7 @@ export default class App extends React.Component {
 
     return !this.state.fontReady
       ? <AppLoading />
-      : <SideMenu menu={menu}>
+      : <SideMenu menu={menu} autoClosing={false}>
           <KeyboardAvoidingView
             style={styles.appContainer}
             behavior="padding"
@@ -190,6 +197,7 @@ export default class App extends React.Component {
               <StatusBar barStyle="light-content" />
               <View style={styles.inputContainer}>
                 <TextInput
+                  underlineColorAndroid={APP_COLOR}
                   onChangeText={value =>
                     this.setState({ site: value || null, passwordReady: false })}
                   autoCapitalize="none"
@@ -201,6 +209,7 @@ export default class App extends React.Component {
               </View>
               <View style={styles.inputContainer}>
                 <TextInput
+                  underlineColorAndroid={APP_COLOR}
                   onChangeText={value =>
                     this.setState({ login: value || null, passwordReady: false })}
                   autoCapitalize="none"
@@ -212,6 +221,7 @@ export default class App extends React.Component {
               </View>
               <View style={[styles.border, styles.row, styles.inputContainer]}>
                 <TextInput
+                  underlineColorAndroid={APP_COLOR}
                   secureTextEntry
                   onChangeText={this.handleMasterPasswordChange}
                   autoCapitalize="none"
@@ -264,6 +274,10 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     justifyContent: 'center',
     padding: DISTANCE,
+    shadowColor: '#000',
+    shadowOpacity: 0.4,
+    shadowOffset: { height: 3 },
+    shadowRadius: 3,
   },
   formContainer: {
     backgroundColor: 'white',
@@ -310,9 +324,6 @@ const styles = StyleSheet.create({
     fontSize: 33,
     color: 'white',
   },
-  switch: {
-    marginLeft: DISTANCE,
-  },
   settings: {
     justifyContent: 'center',
     alignItems: 'stretch',
@@ -327,6 +338,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   settingText: {
+    marginLeft: DISTANCE / 4,
     fontSize: 20,
     fontFamily: 'mono',
     color: '#333',
@@ -342,7 +354,4 @@ const styles = StyleSheet.create({
     marginTop: DISTANCE,
     alignItems: 'center',
   },
-  pickerTitle: {
-
-  }
 });

@@ -10,6 +10,8 @@
     "object-curly-spacing": ["error", "always"],
     "react/jsx-no-duplicate-props": "error",
     "quote-props": ["error", "consistent-as-needed"],
-    "quotes": ["error", "single"]
-  },
+    "quotes": ["error", "single"],
+    "no-use-before-define": 0,
+    "jsx-a11y/img-has-alt": 0
+  }
 }
