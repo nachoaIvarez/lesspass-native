@@ -1,4 +1,4 @@
-<div style="text-align:center"><h1>Lesspass Native</h1><img src="https://cloud.githubusercontent.com/assets/7253814/26029160/e3685516-3804-11e7-82f5-e8b5e6909989.png" alt="alt text" width="200"><img src="https://cloud.githubusercontent.com/assets/7253814/26029162/e9d52afa-3804-11e7-88aa-cfe4a4895474.png" alt="alt text" width="200"><p><small>Lesspass native running on iOS</small></p></div>
+<div style="text-align:center"><h1>Lesspass Native</h1><img src="https://cloud.githubusercontent.com/assets/7253814/26029160/e3685516-3804-11e7-82f5-e8b5e6909989.png" alt="alt text" width="300"><img src="https://cloud.githubusercontent.com/assets/7253814/26029162/e9d52afa-3804-11e7-88aa-cfe4a4895474.png" alt="alt text" width="300"><p><small>Lesspass native running on iOS</small></p></div>
 
 
 ## Help Wanted
